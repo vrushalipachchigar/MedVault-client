@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:5000/api/test/';
+// const API_URL = 'http://localhost:5000/api/test/';
+const API_URL = 'https://medvault-fkq5.onrender.com/api/test/';
 
 @Injectable({
   providedIn: 'root',
