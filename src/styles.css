@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.navbar-brand img {
+  margin-left: 25px;
+  width: 80px;
+  min-height: 50px;
+}

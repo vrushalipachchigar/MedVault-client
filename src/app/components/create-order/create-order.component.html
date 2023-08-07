@@ -1,0 +1,54 @@
+<!-- <div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="order.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input class="form-control" id="price" required [(ngModel)]="order.quantity" name="quantity" />
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" [(ngModel)]="order.category">
+                    <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
+                </select>
+            </div>
+            <button (click)="saveOrder()" class="btn btn-success">Submit</button>
+        </div>
+        <div *ngIf="submitted">
+            <h4>Order was created successfully!</h4>
+            <button class="btn btn-success" (click)="newOrder()">Add</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <h2 class="text-center">Create Order</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="order.name" name="name"
+                    placeholder="Enter medicine name" />
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" id="quantity" required [(ngModel)]="order.quantity"
+                    name="quantity" placeholder="Enter quantity" min="1" />
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category" [(ngModel)]="order.category">
+                    <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
+                </select>
+            </div>
+            <button (click)="saveOrder()" class="btn btn-success btn-block">Submit</button>
+        </div>
+        <div *ngIf="submitted">
+            <h4 class="text-center">Order was created successfully!</h4>
+            <button class="btn btn-success btn-block" (click)="newOrder()">Add Another Order</button>
+        </div>
+    </div>
+</div>

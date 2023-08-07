@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <h2 class="text-center">Add New Medicine</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="medicine.name" name="name"
+                    placeholder="Enter medicine name" />
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" required [(ngModel)]="medicine.price" name="price"
+                    placeholder="Enter price" min="0" step="0.01" />
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" id="quantity" required [(ngModel)]="medicine.quantity"
+                    name="quantity" placeholder="Enter quantity" min="1" />
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" required [(ngModel)]="medicine.description"
+                    name="description" placeholder="Enter description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category" [(ngModel)]="medicine.category">
+                    <option *ngFor="let category of categories" [ngValue]="category.name">{{category.name}}</option>
+                </select>
+            </div>
+
+            <button (click)="saveMedicine()" class="btn btn-success btn-block">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4 class="text-center">Medicine was submitted successfully!</h4>
+            <button class="btn btn-success btn-block" (click)="newMedicine()">Add Another Medicine</button>
+        </div>
+    </div>
+</div>

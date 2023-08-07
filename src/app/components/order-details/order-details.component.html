@@ -1,0 +1,57 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentOrder.id">
+        <h4>Order</h4>
+        <div>
+            <label><strong>Name:</strong></label> {{ currentOrder.name }}
+        </div>
+        <div>
+            <label><strong>Quantity:</strong></label>
+            {{ currentOrder.quantity }}
+        </div>
+        <div>
+            <label><strong>Category:</strong></label>
+            {{ currentOrder.category }}
+        </div>
+        <a class="badge bg-warning" routerLink="/orders/{{ currentOrder.id }}">
+            Edit Order
+        </a>
+    </div>
+    <div *ngIf="!currentOrder">
+        <br />
+        <p>Please click on an Order...</p>
+    </div>
+</div>
+<ng-template #editable>
+    <div *ngIf="currentOrder.id" class="edit-form">
+        <h4>Order</h4>
+        <form>
+            <div class="form-group">
+                <label for="title">Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="currentOrder.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="currentOrder.quantity"
+                    name="quantity" />
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" class="form-control" id="price" [(ngModel)]="currentOrder.category"
+                    name="category" />
+            </div>
+        </form>
+
+        <button type="submit" class="badge bg-success m-2" (click)="updateOrder()">
+            Save Changes
+        </button>
+        <button class="badge bg-danger m-2" (click)="deleteOrder()">
+            Delete Order
+        </button>
+
+        <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentOrder.id">
+        <br />
+        <p>Cannot access this Product...</p>
+    </div>
+</ng-template>

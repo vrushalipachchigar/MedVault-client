@@ -1,0 +1,50 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentMedicine.id">
+        <h4>Medicine</h4>
+        <div>
+            <label><strong>Name:</strong></label> {{ currentMedicine.name }}
+        </div>
+        <div>
+            <label><strong>Description:</strong></label>
+            {{ currentMedicine.description }}
+        </div>
+
+        <a class="badge bg-warning" routerLink="/medicine/{{ currentMedicine.id }}">
+            Edit Medicine
+        </a>
+    </div>
+    <div *ngIf="!currentMedicine">
+        <br />
+        <p>Please click on a Medicine...</p>
+    </div>
+</div>
+<ng-template #editable>
+    <div *ngIf="currentMedicine.id" class="edit-form">
+        <h4>Medicine</h4>
+        <form>
+            <div class="form-group">
+                <label for="title">Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="currentMedicine.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="currentMedicine.description"
+                    name="description" />
+            </div>
+
+        </form>
+
+        <button type="submit m-5" class="badge bg-success mb-2" (click)="updateMedicine()">
+            Save Changes
+        </button>
+        <button class="badge bg-danger m-2" (click)="deleteMedicine()">
+            Delete Medicine
+        </button>
+
+        <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentMedicine.id">
+        <br />
+        <p>Cannot access this Medicine...</p>
+    </div>
+</ng-template>
