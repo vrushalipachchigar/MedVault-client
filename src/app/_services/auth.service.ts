@@ -46,5 +46,10 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'signout', {}, httpOptions);
   }
+
+  isAuthenticated(): Observable<boolean> {
+    // Make a request to your backend to check authentication status
+    return this.http.get<boolean>(AUTH_API + 'check-auth', httpOptions);
+  }
 }
 
